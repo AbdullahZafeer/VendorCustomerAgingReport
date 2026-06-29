@@ -1,0 +1,181 @@
+@Metadata.layer: #CORE
+@UI: { 
+  headerInfo: { 
+    typeName: 'Aging Item', 
+    typeNamePlural: 'Aging Items',
+    title: { type: #STANDARD, value: 'AccountNumber' },
+    description: { type: #STANDARD, value: 'AccountName' }
+  } 
+}
+
+annotate entity ZFI_VCAge_C with
+{
+  /* ========================================================== */
+  /* FACET DEFINITION FOR OBJECT PAGE                           */
+  /* ========================================================== */
+  @UI.facet: [
+    {
+      id:              'GeneralInfo',
+      type:            #COLLECTION,
+      label:           'General Information',
+      position:        10
+    },
+    {
+      id:              'DocumentDetails',
+      purpose:         #STANDARD,
+      type:            #FIELDGROUP_REFERENCE,
+      parentId:        'GeneralInfo',
+      label:           'Document Details',
+      targetQualifier: 'DocDetailsGrp',
+      position:        10
+    },
+    {
+      id:              'AgingBuckets',
+      purpose:         #STANDARD,
+      type:            #FIELDGROUP_REFERENCE,
+      label:           'Aging Analysis',
+      targetQualifier: 'AgingGrp',
+      position:        20
+    }
+  ]
+
+  /* ========================================================== */
+  /* FIELDS & UI ANNOTATIONS                                    */
+  /* ========================================================== */
+
+  @UI.lineItem: [{ position: 5 }]
+  @UI.selectionField: [{ position: 10 }]
+  @EndUserText.label: 'Company Code'
+  CompanyCode;
+
+  @UI.lineItem: [{ position: 10 }]
+  @EndUserText.label: 'Report Name'
+  ReportName;
+
+  @UI.lineItem: [{ position: 20 }]
+  @UI.selectionField: [{ position: 20 }]
+  @EndUserText.label: 'Vendor/Customer Number'
+  @UI.fieldGroup: [{ qualifier: 'DocDetailsGrp', position: 10 }]
+  AccountNumber;
+
+  @UI.lineItem: [{ position: 30 }]  
+  @EndUserText.label: 'Vendor/Customer Name'
+  @UI.fieldGroup: [{ qualifier: 'DocDetailsGrp', position: 20 }]
+  AccountName;
+
+  @UI.lineItem: [{ position: 40 }]  
+  @UI.selectionField: [{ position: 30 }]
+  @EndUserText.label: 'Vendor/Customer Group'
+  @UI.fieldGroup: [{ qualifier: 'DocDetailsGrp', position: 30 }]
+  AccountGroup;
+
+  @UI.lineItem: [{ position: 50 }]  
+  @EndUserText.label: 'Purchase Order/Invoice Number'
+  @UI.fieldGroup: [{ qualifier: 'DocDetailsGrp', position: 40 }]
+  ReferenceDocument;
+
+  @UI.lineItem: [{ position: 60 }]  
+  @EndUserText.label: 'Purchase Order/Invoice Date'
+  @UI.fieldGroup: [{ qualifier: 'DocDetailsGrp', position: 50 }]
+  ReferenceDocumentDate;
+
+  @UI.lineItem: [{ position: 70 }]  
+  @EndUserText.label: 'Reconciliation Account'
+  @UI.fieldGroup: [{ qualifier: 'DocDetailsGrp', position: 60 }]
+  ReconciliationAccount;
+
+  @UI.lineItem: [{ position: 80 }]  
+  @EndUserText.label: 'Reconciliation Account Description'
+  @UI.fieldGroup: [{ qualifier: 'DocDetailsGrp', position: 70 }]
+  ReconciliationAccountName;
+  
+  @UI.lineItem: [{ position: 90 }]
+  @EndUserText.label: 'Posting Date'
+  @UI.fieldGroup: [{ qualifier: 'DocDetailsGrp', position: 80 }]
+  PostingDate;
+  
+  @UI.lineItem: [{ position: 100 }] 
+  @EndUserText.label: 'Document Date'
+  @UI.fieldGroup: [{ qualifier: 'DocDetailsGrp', position: 90 }]
+  DocumentDate;
+
+  @UI.lineItem: [{ position: 110 }] 
+  @EndUserText.label: 'Due Date'
+  @UI.fieldGroup: [{ qualifier: 'DocDetailsGrp', position: 100 }]
+  DueDate;
+  
+  @UI.lineItem: [{ position: 105 }] 
+  @EndUserText.label: 'Evaluation Date'
+  @UI.fieldGroup: [{ qualifier: 'DocDetailsGrp', position: 95 }]
+  EvaluationDate;
+
+  @UI.lineItem: [{ position: 120 }] 
+  @EndUserText.label: 'Invoice/Assignment Number'
+  @UI.fieldGroup: [{ qualifier: 'DocDetailsGrp', position: 110 }]
+  AssignmentReference;
+
+  @UI.lineItem: [{ position: 130 }] 
+  @EndUserText.label: 'Document Number'
+  @UI.fieldGroup: [{ qualifier: 'DocDetailsGrp', position: 120 }]
+  DocumentNumber;
+  
+  @UI.lineItem: [{ position: 140 }]
+  @EndUserText.label: 'Document Type'
+  @UI.fieldGroup: [{ qualifier: 'DocDetailsGrp', position: 130 }]
+  DocumentType;
+
+  @UI.lineItem: [{ position: 150 }] 
+  @EndUserText.label: 'Document Description'
+  @UI.fieldGroup: [{ qualifier: 'DocDetailsGrp', position: 140 }]
+  DocumentTypeName;
+  
+  @UI.lineItem: [{ position: 160 }] 
+  @EndUserText.label: 'Amount'
+  @UI.fieldGroup: [{ qualifier: 'AgingGrp', position: 10 }]
+  Amount;
+
+  @UI.lineItem: [{ position: 170 }] 
+  @EndUserText.label: 'Not Due'
+  @UI.fieldGroup: [{ qualifier: 'AgingGrp', position: 20 }]
+  NotDue;
+
+  @UI.lineItem: [{ position: 180 }] 
+  @EndUserText.label: 'LT 30'
+  @UI.fieldGroup: [{ qualifier: 'AgingGrp', position: 30 }]
+  Days01To29;
+
+  @UI.lineItem: [{ position: 190 }] 
+  @EndUserText.label: '30 – 45'
+  @UI.fieldGroup: [{ qualifier: 'AgingGrp', position: 40 }]
+  Days30To45;
+
+  @UI.lineItem: [{ position: 200 }] 
+  @EndUserText.label: '46 – 60'
+  @UI.fieldGroup: [{ qualifier: 'AgingGrp', position: 50 }]
+  Days46To60;
+
+  @UI.lineItem: [{ position: 210 }] 
+  @EndUserText.label: '61 – 90'
+  @UI.fieldGroup: [{ qualifier: 'AgingGrp', position: 60 }]
+  Days61To90;
+
+  @UI.lineItem: [{ position: 220 }] 
+  @EndUserText.label: '91 – 120'
+  @UI.fieldGroup: [{ qualifier: 'AgingGrp', position: 70 }]
+  Days91To120;
+
+  @UI.lineItem: [{ position: 230 }] 
+  @EndUserText.label: '121 – 180'
+  @UI.fieldGroup: [{ qualifier: 'AgingGrp', position: 80 }]
+  Days121To180;
+
+  @UI.lineItem: [{ position: 240 }] 
+  @EndUserText.label: '181 – 365'
+  @UI.fieldGroup: [{ qualifier: 'AgingGrp', position: 90 }]
+  Days181To365;
+
+  @UI.lineItem: [{ position: 250 }] 
+  @EndUserText.label: 'GT  365'
+  @UI.fieldGroup: [{ qualifier: 'AgingGrp', position: 100 }]
+  DaysOver365;
+}
