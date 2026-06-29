@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition for VC Aging'
+define service ZFI_VCAge_UI {
+  expose ZFI_VCAge_C as VendorCustomerAging;
+}

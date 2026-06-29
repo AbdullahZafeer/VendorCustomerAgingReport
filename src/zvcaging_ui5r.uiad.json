@@ -1,0 +1,34 @@
+{
+  "formatVersion": "2",
+  "header": {
+    "description": "Vendor and Customer Line Item Aging",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "generalInformation": {
+    "appType": "ui5",
+    "catalogId": "SAP_TC_UI5_REPO_UIAD",
+    "targetMappingTitle": "Vendor and Customer Line Item Aging"
+  },
+  "ui5AppDetails": {
+    "appId": "zfivcagingreport"
+  },
+  "navigation": {
+    "targetMappingId": "UI5R_7EDEADEE6E0C8AE3FB8A6A646F4C89A7E2800F7D_TM",
+    "semanticObject": "VendorCustomerAging",
+    "action": "display",
+    "desktop": true,
+    "tablet": true,
+    "phone": true
+  },
+  "tiles": [
+    {
+      "id": "UI5R_7EDEADEE6E0C8AE3FB8A6A646F4C89A7E2800F7D_AL",
+      "tileType": "static",
+      "isDefault": true,
+      "standard": {
+        "title": "Vendor and Customer Line Item Aging"
+      }
+    }
+  ]
+}
